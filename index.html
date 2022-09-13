@@ -2,63 +2,62 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Why does the `<link>` to `style.css` have to come last? -->
-  <!-- we want the style css to load last to prevent it from being overwritten -->
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <!-- local css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
   <title>Weather Dashboard</title>
 </head>
 
-<body class="flex-column min-100-vh">
-  <header class="header">
-    
-    <h1>Weather Dashboard</h1>
-  </header>
-
-
-  <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
-
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search For a City:</h3>
-        <form id="user-form" class="card-body">
-          <label class="form-label" for="username"></label>
-          <input name="username" id="username" type="text" autofocus="true" class="form-input col-md-12" />
-          <button type="submit" class="btn">Search</button>
-        </form>
-      </div>
-
-      <div class="card">
-        <h3 class="card-header text-uppercase">Previously Searched</h3>
-        <div id="language-buttons" class="card-body">
-          
-        </div>
+<body>
+  <div id="weatherContainer" class="container mb-3 mt-3">
+    <div id="weather" class="row">
+      <div id="title" class="col-12 title text-center font-weight-bold">
+        <h1>Weather Dashboard</h1>
       </div>
     </div>
-
-    <div class="col-12 col-md-8">
-        <div>
-            <div class="card-body">
-                <h5 id="cityDate" class="card-title"></h5>
-                <p class="card-text"><span>Temperature: </span><span id="currentTemp"></span></p>
-                <p class="card-text"><span>Humidity: </span><span id="currentHumidity"></span></p>
-                <p class="card-text"><span>Wind Speed: </span><span id="currentWindSpeed"></span></p>
-                <p class="card-text"><span>UV Index: </span><span id="currentUVIndex" class="d-inline-block"></span></p>
-              </div>
+    <div class="row">
+      <div id="zipCodeContainer" class="col-4 zipCode text-left font-weight-bold">
+        <p>Search for a City:</p>
+        <div class="input-group">
+          <input id="zipCode" type="search" class="form-control rounded " placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" />
+          <button id="searchBtn" type="button" class="SearchBtn btn-outline-primary">search</button>
         </div>
-        <div>
-            <h2 class="5-day-forecast">Five Day Forecast</h2>
-            <div id="5-day-container" class="5-day-list-group"></div>
+        <div id="locationHistory" class="list-group">
+        </div>
+      </div>
+        <div class="col-8 h-50 pr-0 pt-3">
+          <div id="weatherData">
+            <div id="currentWeather" class="border-light">
+              <div class="card">
+                <div class="card-body">
+                  <h5 id="cityDate" class="card-title"></h5>
+                  <p class="card-text"><span>Temperature: </span><span id="currentTemp"></span></p>
+                  <p class="card-text"><span>Humidity: </span><span id="currentHumidity"></span></p>
+                  <p class="card-text"><span>Wind Speed: </span><span id="currentWindSpeed"></span></p>
+                  <p class="card-text"><span>UV Index: </span><span id="currentUVIndex" class="d-inline-block"></span></p>
+                </div>
+              </div>
+            </div>
+            <div id="5DayWeather">
+              <h3>5-Day Forecast:</h3>
+              <div>
+                <div id="fiveDay" class="d-flex justify-content-between ">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       
     </div>
-  </main>
-
-  <script src="./assets/js/homepage.js"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
